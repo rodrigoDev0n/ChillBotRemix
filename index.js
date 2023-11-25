@@ -3,8 +3,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 import { Intents } from 'oceanic.js';
-import { playMusic } from './commands/play.js';
-import { playMusicList } from './commands/playlist.js';
+import { playMusic } from './src/commands/play.js';
+import { playMusicList } from './src/commands/playlist.js';
 
 import {
     Client,
