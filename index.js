@@ -1,22 +1,27 @@
+import { Intents } from 'oceanic.js';
 import { playMusic } from './commands/play.js';
+import { playMusicList } from './commands/playlist.js';
 
 import {
     Client,
     GatewayIntentBits,
     Partials,
-    Collection
+    Collection,
 } from 'discord.js';
 
-
+/* GuildVoiceStates = permite que se reproduczca audio en un canal */
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessageReactions,
     ],
     partials: [
         Partials.Channel
-    ]
+    ],
 })
 
 client.commands = new Collection();
@@ -28,8 +33,12 @@ client.on('ready', () => {
 const prefix = '-';
 
 client.on('messageCreate', async (message) => {
-    if (message.content.startsWith(prefix+'play')) {
-        playMusic(message, client);
+    if (message.content.startsWith(prefix + 'play')) {
+        playMusic(message);
+    }
+
+    if (message.content.startsWith(prefix + 'dolist')) {
+        playMusicList(message);
     }
 })
 

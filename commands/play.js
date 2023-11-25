@@ -6,6 +6,7 @@ import {
 } from "@discordjs/voice";
 
 export const playMusic = async (message) => {
+
     let commandOriginal = message.content;
     let textoEliminado = "-play";
 
@@ -28,9 +29,21 @@ export const playMusic = async (message) => {
             quality: 'highestaudio'
         });
 
+
+    if (!stream) {
+        message.channel.send("No se pudo encontrar la cancion");
+    }
+
+    console.log(message);
+
     const resource = createAudioResource(await stream);
 
-    const player = createAudioPlayer();
+    const player = createAudioPlayer( {
+        behaviors: {
+            noSubscriber: true,
+        },
+        volume: 1,
+    });
 
     player.on("stateChange", (oldState, newState) => {
         console.log(oldState.status, newState.status);
