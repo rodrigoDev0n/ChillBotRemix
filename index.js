@@ -1,3 +1,7 @@
+import { config as dotenvConfig } from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 import { Intents } from 'oceanic.js';
 import { playMusic } from './commands/play.js';
 import { playMusicList } from './commands/playlist.js';
@@ -42,6 +46,11 @@ client.on('messageCreate', async (message) => {
     }
 })
 
-client.login('MTE3Nzg0NDk3MjU4MjYwODk4Ng.GkuJRK.5NDSfCZub3JnESwSQUqRzjr9v5Jl8Je-2knNrg');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-/* TOKEN:MTE3Nzg0NDk3MjU4MjYwODk4Ng.GkuJRK.5NDSfCZub3JnESwSQUqRzjr9v5Jl8Je-2knNrg*/
+dotenvConfig({ path: `${__dirname}/.env` });
+
+const loginToken = process.env.TOKEN;
+
+client.login(loginToken);
