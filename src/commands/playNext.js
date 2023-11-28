@@ -1,7 +1,7 @@
 import ytdl from "ytdl-core";
 
 import {
-    ComponentType, time,
+    ComponentType,
 } from "discord.js";
 
 import {
@@ -10,18 +10,13 @@ import {
 } from "@discordjs/voice";
 
 import { calculateTime } from "../common/calculateTime.js";
-import { collectorsMap, createAndAttachCollector, cleanupCollectors } from "../common/collectors.js";
+import { createAndAttachCollector, cleanupCollectors } from "../common/collectors.js";
 import { playerButtons } from "../buttons/playerButtons.js";
 import { infoCard } from "../components/infoCard.js";
 
 export const playNextSong = async (songs, index, connection, message) => {
 
     const { row } = playerButtons(index, songs);
-
-    /* const messageResponse = await message.reply({
-        components: [row],
-        ephemeral: true,
-    }); */
 
     const filter = (interaction) => {
         return interaction.customId === 'Back' ||

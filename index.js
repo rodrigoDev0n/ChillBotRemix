@@ -12,6 +12,7 @@ import {
     Partials,
     Collection,
 } from 'discord.js';
+import { playws } from './src/commands/playws.js';
 
 /* GuildVoiceStates = permite que se reproduczca audio en un canal */
 const client = new Client({
@@ -43,6 +44,10 @@ client.on('messageCreate', async (message) => {
 
     if (message.content.startsWith(prefix + 'dolist')) {
         playMusicList(message);
+    }
+
+    if (message.content.startsWith(prefix + 'ws')) {
+        playws(message);
     }
 })
 
