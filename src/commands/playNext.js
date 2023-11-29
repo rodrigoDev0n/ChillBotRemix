@@ -15,6 +15,7 @@ import { playerButtons } from "../buttons/playerButtons.js";
 import { infoCard } from "../components/infoCard.js";
 
 export const playNextSong = async (songs, index, connection, message) => {
+  
 
     const { row } = playerButtons(index, songs);
 
@@ -76,7 +77,7 @@ export const playNextSong = async (songs, index, connection, message) => {
             components: [row],
             ephemeral: true
         })
-
+        
         const confirmationCollector = await messageResponse.createMessageComponentCollector({
             filter,
             componentType: ComponentType.Button,

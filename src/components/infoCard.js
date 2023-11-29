@@ -2,7 +2,7 @@ import { ActionRowBuilder, EmbedBuilder } from 'discord.js';
 export const infoCard = (message, songInfo) => {
 
     const card = new EmbedBuilder();
-
+  
     card
         .setColor('#0099ff')
         .setTitle('Datos de la canción')
