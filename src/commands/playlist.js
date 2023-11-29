@@ -18,6 +18,7 @@ export const playMusicList = async (message) => {
         guildId: message.guild.id,
         adapterCreator: message.guild.voiceAdapterCreator,
     });
+    
     playNextSong(songs, 0, connection, message);
 };
 
